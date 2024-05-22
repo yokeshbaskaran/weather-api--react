@@ -1,0 +1,81 @@
+Color-ThemeSlider
+
+1.    import => 
+i)   usestate
+ii)  framer-motion
+iii) react-icons/fi 
+and in 
+css: 	* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+/*for transition in page*/
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+} 
+
+
+2.            
+
+const [selectedMode, setSelectedMode] = useState("light");
+
+
+      <section className={`${selectedMode === "light" ? "lightie" : "darkie"}`}>
+	    <div className="m-2 p-2 absolute top-0 right-0 overflow-hidden">
+       		 <ThemeSlider selected={selected} setSelected={setSelected} />
+      	    </div>
+     </section>
+3. 
+
+import { motion } from "framer-motion";
+import { FiMoon, FiSun } from "react-icons/fi";
+
+const TOGGLE_CLASSES =
+    "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-2.5 transition-colors relative z-10";
+
+export const ToggleThemeMode = ({ selected, setSelected }) => {
+    return (
+        <>
+            <div className={` ${selected === "light" ? "lightie" : "darkie"
+                } relative flex w-fit items-center rounded-full 
+                ${selected === 'light' ? "bg-[#fde067]" : "bg-black"}`}>
+
+                <button
+                    className={`${TOGGLE_CLASSES} ${selected === 'light' ? "text-white" : "text-[#fde067]"}`}
+                    onClick={() => {
+                        setSelected("light");
+                    }}
+                >
+                    <FiSun className="relative z-10 text-lg md:text-sm" />
+                    <span className="relative z-10">Light</span>
+                </button>
+
+                <button
+                    className={`${TOGGLE_CLASSES} ${selected === 'light' ? "text-black" : "text-white"}`}
+                    onClick={() => {
+                        setSelected("dark");
+                    }}
+                >
+                    <FiMoon className="relative z-10 text-lg md:text-sm" />
+                    <span className="relative z-10">Dark</span>
+                </button>
+
+                <div
+                    className={`absolute inset-0 z-0 flex ${selected === "dark" ? "justify-end" : "justify-start"
+                        }`}
+                >
+                    <motion.span
+                        layout
+                        transition={{ type: "spring", damping: 15, stiffness: 250 }}
+                        className="h-full w-1/2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
+                    />
+                </div>
+
+            </div >
+
+        </>
+    );
+};

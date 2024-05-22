@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+/* @layer base {
+  :root {
+    --color-backg: 210deg 40% 98%;
+    --color-content: 217deg 32.6% 17.5%;
+
+    --color-accent1: 288deg 95.8% 90%;
+    --color-accent2: 168deg 83.8% 78.2%;
+  }
+
+  @media (prefers-color-scheme:  ) {
+    :root {
+      --color-backg: 217deg 32.6% 17.5%;
+      --color-content: 210deg 40% 98%;
+
+      --color-accent1: 288deg 95.8% 60.6%;
+      --color-accent2: 168deg 83.8% 48.2%;
+    }
+  }
+} */
+
+.lightie {
+  --text-color: black;
+  --bg-color: white;
+  --style-color1: #daa520;
+}
+
+.darkie {
+  --text-color: white;
+  --bg-color: rgb(36, 33, 33);
+  --style-color1: #0d47e8;
+}
+
+.yoki {
+  border: 2px solid red;
+}
